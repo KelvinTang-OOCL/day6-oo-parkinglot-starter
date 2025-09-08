@@ -42,8 +42,8 @@ public class ParkingLot {
         return capacity-parkedCars.size();
     }
 
-    public int getAvailableCapacityRatio() {
-        return getAvailableCapacity()/capacity;
+    public float getAvailableCapacityRatio() {
+        return (float) getAvailableCapacity() /capacity;
     }
 
 }

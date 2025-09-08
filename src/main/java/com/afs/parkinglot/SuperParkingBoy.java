@@ -14,7 +14,7 @@ public class SuperParkingBoy {
 
         ParkingLot availableParkingLot = parkingLots.stream()
                 .filter(parkingLot -> !parkingLot.isFull())
-                .max(Comparator.comparingInt(ParkingLot::getAvailableCapacityRatio))
+                .max(Comparator.comparingDouble(ParkingLot::getAvailableCapacityRatio))
                 .orElse(null);
 
         if (availableParkingLot == null) {
@@ -32,5 +32,9 @@ public class SuperParkingBoy {
             }
         }
         throw new UnrecognizedParkingTicketException("Unrecognized parking ticket.");
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
     }
 }

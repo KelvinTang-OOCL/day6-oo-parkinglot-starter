@@ -308,6 +308,25 @@ public class ParkingLotTest {
         //Then
         List<Integer> result = smartParkingBoy.getParkingLots().stream().map(ParkingLot::getAvailableCapacity).toList();
         assertEquals(List.of(2, 2), result);
+    }
 
+    @Test
+    void should_return_expected_capacity_list_when_park_given_SuperParkingBoy_and_not_full_parkingLots_and_Cars() throws NoAvailablePositionException {
+        //Given
+        ParkingLot parkingLot1 = new ParkingLot(2);
+        ParkingLot parkingLot2= new ParkingLot(3);
+        parkingLot1.park(new Car());
+        parkingLot2.park(new Car());
+
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(List.of(
+                parkingLot1, parkingLot2
+        ));
+
+        //When
+        superParkingBoy.park(new Car());
+
+        //Then
+        List<Integer> result = superParkingBoy.getParkingLots().stream().map(ParkingLot::getAvailableCapacity).toList();
+        assertEquals(List.of(1, 1), result);
     }
 }
