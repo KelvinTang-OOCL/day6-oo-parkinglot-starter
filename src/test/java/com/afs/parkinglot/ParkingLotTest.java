@@ -45,4 +45,16 @@ public class ParkingLotTest {
         //Then
         assertEquals("No available position.", noAvailablePositionException.getMessage());
     }
+
+    @Test
+    void should_return_ParkingTicket_when_park_given_not_full_ParkingLot_and_null_Car() throws NoAvailablePositionException {
+        //Given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = null;
+
+        //When
+
+        //Then
+        assertNull(parkingLot.park(car));
+    }
 }
