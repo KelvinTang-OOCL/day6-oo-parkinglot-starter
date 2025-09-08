@@ -84,4 +84,21 @@ public class ParkingLotTest {
         //Then
         assertEquals(car, fetchedCat);
     }
+
+    @Test
+    void should_return_Car_when_fetch_given_invalid_ticket() throws UnrecognizedParkingTicketException {
+        //Given
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car car = new Car();
+        ParkingTicket parkingTicket = new ParkingTicket();
+
+        //When
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(
+                UnrecognizedParkingTicketException.class,
+                () -> parkingLot.fetch(parkingTicket)
+        );
+
+        //Then
+        assertEquals("Unrecognized parking ticket.", unrecognizedParkingTicketException.getMessage());
+    }
 }
