@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.afs.parkinglot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-09-08T10:08:24" hostname="TANGKE3-W11" time="0.01">
+<testsuite name="com.afs.parkinglot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-09-08T10:10:42" hostname="TANGKE3-W11" time="0.01">
   <properties/>
-  <testcase name="should_return_Car_when_fetch_given_invalid_ticket()" classname="com.afs.parkinglot.ParkingLotTest" time="0.01"/>
+  <testcase name="should_throw_UnrecognizedParkingTicketException_when_fetch_given_null_ticket()" classname="com.afs.parkinglot.ParkingLotTest" time="0.01"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

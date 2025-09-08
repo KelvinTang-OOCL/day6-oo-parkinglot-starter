@@ -31,7 +31,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_thrown_noAvailablePositionException_when_park_given_full_ParkingLot_and_Car() throws NoAvailablePositionException {
+    void should_thrown_NoAvailablePositionException_when_park_given_full_ParkingLot_and_Car() throws NoAvailablePositionException {
         //Given
         ParkingLot parkingLot = new ParkingLot(0);
         Car car = new Car();
@@ -86,7 +86,24 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_Car_when_fetch_given_invalid_ticket() throws UnrecognizedParkingTicketException {
+    void should_throw_UnrecognizedParkingTicketException_when_fetch_given_invalid_ticket() throws UnrecognizedParkingTicketException {
+        //Given
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car car = new Car();
+        ParkingTicket parkingTicket = new ParkingTicket();
+
+        //When
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(
+                UnrecognizedParkingTicketException.class,
+                () -> parkingLot.fetch(parkingTicket)
+        );
+
+        //Then
+        assertEquals("Unrecognized parking ticket.", unrecognizedParkingTicketException.getMessage());
+    }
+
+    @Test
+    void should_throw_UnrecognizedParkingTicketException_when_fetch_given_null_ticket() throws UnrecognizedParkingTicketException {
         //Given
         ParkingLot parkingLot = new ParkingLot(2);
         Car car = new Car();
