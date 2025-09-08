@@ -1,6 +1,7 @@
 package com.afs.parkinglot;
 
 public class NoAvailablePositionException extends Exception {
-    public NoAvailablePositionException(String s) {
+    public NoAvailablePositionException(String message) {
+        super(message);
     }
 }

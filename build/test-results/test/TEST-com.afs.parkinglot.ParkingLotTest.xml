@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.afs.parkinglot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-09-08T09:39:09" hostname="TANGKE3-W11" time="0.017">
+<testsuite name="com.afs.parkinglot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-09-08T09:51:47" hostname="TANGKE3-W11" time="0.012">
   <properties/>
-  <testcase name="should_return_ParkingTicket_when_park_given_not_full_ParkingLot_and_Car()" classname="com.afs.parkinglot.ParkingLotTest" time="0.017"/>
+  <testcase name="should_return_ParkingTicket_when_park_given_full_ParkingLot_and_Car()" classname="com.afs.parkinglot.ParkingLotTest" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
