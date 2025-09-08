@@ -107,9 +107,28 @@ public class ParkingLotTest {
         //Given
         ParkingLot parkingLot = new ParkingLot(2);
         Car car = new Car();
-        ParkingTicket parkingTicket = new ParkingTicket();
+        ParkingTicket parkingTicket = null;
 
         //When
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(
+                UnrecognizedParkingTicketException.class,
+                () -> parkingLot.fetch(parkingTicket)
+        );
+
+        //Then
+        assertEquals("Unrecognized parking ticket.", unrecognizedParkingTicketException.getMessage());
+    }
+
+    @Test
+    void should_throw_UnrecognizedParkingTicketException_when_fetch_given_used_ticket() throws UnrecognizedParkingTicketException, NoAvailablePositionException {
+        //Given
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingLot.park(car);
+        parkingLot.fetch(parkingTicket);
+
+        //When
+
         UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(
                 UnrecognizedParkingTicketException.class,
                 () -> parkingLot.fetch(parkingTicket)
