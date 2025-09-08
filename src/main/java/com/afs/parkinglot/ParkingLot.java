@@ -15,6 +15,9 @@ public class ParkingLot {
         if (isFull()) {
             throw new NoAvailablePositionException("No available position.");
         }
+        if (car == null || parkedCars.containsValue(car)){
+            return null;
+        }
         ParkingTicket parkingTicket = new ParkingTicket();
         parkedCars.put(parkingTicket, car);
         return parkingTicket;
