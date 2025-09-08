@@ -190,4 +190,41 @@ public class ParkingLotTest {
         //Then
         assertNull(standardParkingBoy.park(car));
     }
+
+    @Test
+    void should_return_null_when_park_given_StandardParkingBoy_and_not_full_ParkingLot_and_parked_Car() throws NoAvailablePositionException {
+        //Given
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(List.of(
+                new ParkingLot(0),
+                new ParkingLot(0),
+                new ParkingLot(2)
+        ));
+        Car car = new Car();
+
+        //When
+        standardParkingBoy.park(car);
+
+        //Then
+        assertNull(standardParkingBoy.park(car));
+    }
+
+    @Test
+    void should_return_Car_when_fetch_given_StandardParkingBoy_and_correct_ticket() throws NoAvailablePositionException, UnrecognizedParkingTicketException {
+        //Given
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(List.of(
+                new ParkingLot(0),
+                new ParkingLot(0),
+                new ParkingLot(2)
+        ));
+        Car car = new Car();
+        ParkingTicket parkingTicket = standardParkingBoy.park(car);
+
+        //When
+        Car fetchedCat = standardParkingBoy.fetch(parkingTicket);
+
+        //Then
+        assertEquals(car, fetchedCat);
+    }
+
+
 }
