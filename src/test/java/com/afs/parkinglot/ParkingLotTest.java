@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
-    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
     public void setup() {
@@ -31,7 +31,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_ParkingTicket_when_park_given_full_ParkingLot_and_Car() throws NoAvailablePositionException {
+    void should_thrown_noAvailablePositionException_when_park_given_full_ParkingLot_and_Car() throws NoAvailablePositionException {
         //Given
         ParkingLot parkingLot = new ParkingLot(0);
         Car car = new Car();
@@ -47,7 +47,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_ParkingTicket_when_park_given_not_full_ParkingLot_and_null_Car() throws NoAvailablePositionException {
+    void should_return_null_when_park_given_not_full_ParkingLot_and_null_Car() throws NoAvailablePositionException {
         //Given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = null;
@@ -59,7 +59,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_ParkingTicket_when_park_given_not_full_ParkingLot_and_parked_Car() throws NoAvailablePositionException {
+    void should_return_null_when_park_given_not_full_ParkingLot_and_parked_Car() throws NoAvailablePositionException {
         //Given
         ParkingLot parkingLot = new ParkingLot(2);
         Car car = new Car();
@@ -69,5 +69,19 @@ public class ParkingLotTest {
 
         //Then
         assertNull(parkingLot.park(car));
+    }
+
+    @Test
+    void should_return_Car_when_fetch_given_correct_ticket() throws NoAvailablePositionException, UnrecognizedParkingTicketException {
+        //Given
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingLot.park(car);
+
+        //When
+        Car fetchedCat = parkingLot.fetch(parkingTicket);
+
+        //Then
+        assertEquals(car, fetchedCat);
     }
 }
