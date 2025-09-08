@@ -290,4 +290,24 @@ public class ParkingLotTest {
         //Then
         assertEquals("Unrecognized parking ticket.", unrecognizedParkingTicketException.getMessage());
     }
+
+    @Test
+    void should_return_expected_capacity_list_when_park_given_SmartParkingBoy_and_not_full_parkingLots_and_Cars() throws NoAvailablePositionException {
+        //Given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(
+                new ParkingLot(3),
+                new ParkingLot(3)
+        ));
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        //When
+        smartParkingBoy.park(car1);
+        smartParkingBoy.park(car2);
+
+        //Then
+        List<Integer> result = smartParkingBoy.getParkingLots().stream().map(ParkingLot::getAvailableCapacity).toList();
+        assertEquals(List.of(2, 2), result);
+
+    }
 }

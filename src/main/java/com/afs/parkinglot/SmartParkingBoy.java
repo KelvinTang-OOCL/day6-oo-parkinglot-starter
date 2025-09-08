@@ -33,4 +33,8 @@ public class SmartParkingBoy {
         }
         throw new UnrecognizedParkingTicketException("Unrecognized parking ticket.");
     }
+
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
 }
