@@ -14,7 +14,7 @@ public class SmartParkingBoy {
 
         ParkingLot availableParkingLot = parkingLots.stream()
                 .filter(parkingLot -> !parkingLot.isFull())
-                .max(Comparator.comparingInt(ParkingLot::getCapacity))
+                .max(Comparator.comparingInt(ParkingLot::getAvailableCapacity))
                 .orElse(null);
 
         if (availableParkingLot == null) {
