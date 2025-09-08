@@ -1,12 +1,11 @@
 package com.afs.parkinglot;
 
 import java.util.List;
-import java.util.Optional;
 
-public class StandParkingBoy {
+public class StandardParkingBoy {
     private final List<ParkingLot> parkingLots;
 
-    public StandParkingBoy(List<ParkingLot> parkingLots) {
+    public StandardParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 

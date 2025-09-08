@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -136,5 +137,21 @@ public class ParkingLotTest {
 
         //Then
         assertEquals("Unrecognized parking ticket.", unrecognizedParkingTicketException.getMessage());
+    }
+
+    @Test
+    void should_return_ParkingTicket_when_park_given_StandardParkingBoy_and_any_not_full_ParkingLot_and_Car() throws UnrecognizedParkingTicketException, NoAvailablePositionException {
+        //Given
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(List.of(
+                new ParkingLot(0),
+                new ParkingLot(0),
+                new ParkingLot(1)
+        ));
+        Car car = new Car();
+
+        //When
+        ParkingTicket parkingTicket = standardParkingBoy.park(car);
+        //Then
+        assertNotNull(parkingTicket);
     }
 }
