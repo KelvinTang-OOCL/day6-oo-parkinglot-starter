@@ -10,6 +10,7 @@ public class StandardParkingBoy {
     }
 
     public ParkingTicket park(Car car) throws NoAvailablePositionException {
+
         ParkingLot availableParkingLot = parkingLots.stream()
                 .filter(parkingLot -> !parkingLot.isFull())
                 .findFirst()

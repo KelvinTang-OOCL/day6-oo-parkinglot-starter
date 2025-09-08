@@ -174,4 +174,20 @@ public class ParkingLotTest {
         //Then
         assertEquals("No available position.", noAvailablePositionException.getMessage());
     }
+
+    @Test
+    void should_return_null_when_park_given_StandardParkingBoy_and_not_full_ParkingLot_and_null_Car() throws NoAvailablePositionException {
+        //Given
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(List.of(
+                new ParkingLot(0),
+                new ParkingLot(0),
+                new ParkingLot(1)
+        ));
+        Car car = null;
+
+        //When
+
+        //Then
+        assertNull(standardParkingBoy.park(car));
+    }
 }
